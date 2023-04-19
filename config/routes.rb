@@ -19,6 +19,9 @@ Rails.application.routes.draw do
     resource :relationships, only: [:create, :destroy]
     get "follow" => "relationships#follow", as: "follow"
     get "followed" => "relationships#followed", as: "followed"
+    get 'search', to: 'searches#search'
   end
+
+
   # For details on the DSL available within this file, see https://guides.rubyonrails.org/routing.html
 end
