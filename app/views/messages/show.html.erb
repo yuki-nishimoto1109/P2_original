@@ -1,0 +1,21 @@
+<h1><%= @user_to.name %>さんとのチャット</h1>
+
+<div class="container">
+  <% @messages.each do |message| %>
+    <div class="row">
+      <%= message.message %>
+    </div>
+  <% end %>
+</div>
+
+<div class="container">
+  <div class="row">
+    <div class="col-9 justify-content-start">
+      <%= form_with model: @message, url: user_message_post_path(current_user.id, params[:id]) do |f| %>
+        <div class="form-group">
+          <%= f.text_field :message, class: 'form-control' %>
+        </div>
+      <% end %>
+    </div>
+  </div>
+</div>

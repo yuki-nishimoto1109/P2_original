@@ -1,0 +1,16 @@
+<% mybook.book_comments.each do |comment| %>
+  <tr>
+    <td>
+      <%= link_to (comment.user) do %>
+        <%= image_tag comment.user.get_profile_image, size:"100x100" %><br>
+        <%= comment.user.name %>
+      <% end %>
+    </td>
+    <td><%= comment.comment %></td>
+    <% if comment.user == current_user %>
+      <td>
+        <%= link_to 'Destroy', book_book_comment_path(comment.book, comment), remote: true, method: :delete, data: { confirm: '本当に消しますか？' }, class: "btn btn-sm btn-danger"%>
+      </td>
+    <% end %>
+  </tr>
+<% end %>
